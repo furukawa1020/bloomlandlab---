@@ -8,6 +8,7 @@ import { GoogleAnalytics } from '@/components/common/GoogleAnalytics'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://bloomlandlabo.netlify.app'),
   title: {
     default: 'Bloom Land Labo | 潤いある国土を育むテクノロジー・カンパニー',
     template: '%s | Bloom Land Labo'
