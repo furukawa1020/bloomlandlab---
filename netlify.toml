@@ -1,0 +1,64 @@
+[build]
+  command = "npm run build"
+  publish = "out"
+
+[dev]
+  port = 8888
+
+[[plugins]]
+  package = "@netlify/plugin-sitemap"
+
+  [plugins.inputs]
+    buildDir = "out"
+    exclude = [
+      "/admin",
+      "/404.html"
+    ]
+
+# リダイレクト設定
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
+
+# セキュリティヘッダー
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# フォーム設定
+[functions]
+  directory = "netlify/functions"
+
+# 環境変数（例）
+[context.production.environment]
+  NEXT_PUBLIC_GA_ID = "G-XXXXXXXXXX"
+  NEXT_PUBLIC_SITE_URL = "https://bloomlandlabo.netlify.app"
+
+[context.deploy-preview.environment]
+  NEXT_PUBLIC_GA_ID = ""
+  NEXT_PUBLIC_SITE_URL = "https://deploy-preview-$REVIEW_ID--bloomlandlabo.netlify.app"

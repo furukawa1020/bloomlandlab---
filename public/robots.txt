@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# サイトマップの場所
+Sitemap: https://bloomlandlabo.netlify.app/sitemap.xml
+
+# クロール制限
+Crawl-delay: 1
+
+# 管理者ページは非公開
+Disallow: /admin/
+Disallow: /api/
+
+# 開発用ファイルは非公開
+Disallow: /.next/
+Disallow: /node_modules/
+
+# プレビューページは非公開
+Disallow: /*?preview=*

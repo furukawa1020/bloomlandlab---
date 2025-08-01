@@ -1,0 +1,8 @@
+# フォームページからadminページへのリダイレクト
+/admin /admin/index.html 200
+
+# 旧URLから新URLへのリダイレクト（必要に応じて）
+/old-page /new-page 301
+
+# SPAのフォールバック（404ページ）
+/* /404.html 404
